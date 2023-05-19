@@ -140,7 +140,7 @@ const Home = () =>{
     const [listUpdate,setListUpdate] = useState(1);
     const [selectedItem,setSelectedItem] = useState(null);
     useEffect(()=>{
-        if(listUpdate==1){
+        if(listUpdate===1){
         axios.get("http://localhost:3001/",{}).then((data)=>{
         console.log(data);   
         setTask(data.data.tasks);
@@ -187,7 +187,7 @@ const Home = () =>{
             task:newtask
         }).then((x)=>{
             console.log(x);
-            if(x.data.status==false){
+            if(x.data.status===false){
                 console.log('Error');
             }else{
                 setListUpdate(1);
@@ -202,7 +202,7 @@ const Home = () =>{
         }
     }
     const onKeyHandler = (e)=>{
-        if(e.key=='Enter'){
+        if(e.key==='Enter'){
             // Add Task to List Here - Call API
             handleAdd();
             setShowModal(false);
@@ -212,7 +212,7 @@ const Home = () =>{
         // Call API for deleteOne
         axios.delete(`http://localhost:3001/${_id}`,{}).then((res)=>{
             console.log(res);
-            if(res.data.status==true){
+            if(res.data.status===true){
                 setListUpdate(1);
             }else{
                 alert("Error: Task does not exist in TO DO List");
@@ -222,7 +222,7 @@ const Home = () =>{
     }
     const handleClearAll = ()=>{
         axios.delete("http://localhost:3001/",{}).then((res)=>{
-            if(res.data.status==true){
+            if(res.data.status===true){
                 setListUpdate(1);
             }else{
                 alert("Error: List is already empty");
@@ -235,7 +235,7 @@ const Home = () =>{
             task:t,
             completed:c
         }).then((res)=>{
-            if(res.data.status==true){
+            if(res.data.status===true){
                 setListUpdate(1);
             }else{
                 alert("Error: Completed tasks can not be undo");
@@ -256,9 +256,9 @@ const Home = () =>{
           <Modal.Title>Item Detail</Modal.Title>
         </Modal.Header>
         {selectedItem!=null && <Modal.Body>
-          <h6>TO DO: {selectedItem._id}</h6> <br />
+          <h6>Item#: {selectedItem._id}</h6> <br />
           <h6>TO DO: {selectedItem.task}</h6> <br />
-          <h6>{selectedItem.completed==true && <div>STATUS: COMPLETED</div>}{selectedItem.completed==false && <div>STATUS: NOT COMPLETED</div>}</h6> <br />
+          <h6>{selectedItem.completed===true && <div>STATUS: COMPLETED</div>}{selectedItem.completed===false && <div>STATUS: NOT COMPLETED</div>}</h6> <br />
           <h6>CREATED ON : {(Date(selectedItem.creation_time))}</h6> 
         </Modal.Body>}
       </Modal>
@@ -285,18 +285,18 @@ const Home = () =>{
         </Dropdown.Menu>
       )}
     </div>
-    </div><div style={{marginLeft:'40px'}} onClick={()=>{setIsOpen(false)}}>To do today</div><div style={{marginLeft:'90px', color:'black', opacity:'40%'}} onClick={()=>{setShow(!show);setIsOpen(false);}}>{ show==false && <ExpandMoreIcon/>}{ show==true && <ExpandLessIcon/>} </div></div></Col>
+    </div><div style={{marginLeft:'40px'}} onClick={()=>{setIsOpen(false)}}>To do today</div><div style={{marginLeft:'90px', color:'black', opacity:'40%'}} onClick={()=>{setShow(!show);setIsOpen(false);}}>{ show===false && <ExpandMoreIcon/>}{ show===true && <ExpandLessIcon/>} </div></div></Col>
             </Row>
-            { show==true && <div style={{zIndex:'0'}}>
+            { show===true && <div style={{zIndex:'0'}}>
             {
                 task.map((data, idx)=>{
                     var theme = "none";
                     if(idx-start<9 && idx-start>=0){
-                    if(idx-start==0){
+                    if(idx-start===0){
                             theme = "top-item-theme"
                         }
                         else{
-                            if(idx-start==8){
+                            if(idx-start===8){
                                 theme = "bottom-item-theme"
                             }else if(idx-start>0){
                                 theme = "mid-item-theme"
@@ -323,7 +323,7 @@ const Home = () =>{
                                 </div>
                         </Col>
                         <Col><div>
-                                    {toggleIdx==idx && itemOpt && (
+                                    {toggleIdx===idx && itemOpt && (
                                         <Dropdown.Menu
                                         style={{left:'55.3%', opacity:'80%'}}
                                         show={itemOpt}
