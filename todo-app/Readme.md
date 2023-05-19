@@ -14,7 +14,7 @@ Navigate to the todo-application/todo-app/ directory using the cd command:
 bash
 Copy code
 cd todo-application/todo-app/
-Usage
+# Usage
 Make sure you have Docker installed on your device and ensure that ports 3000 and 3001 are free.
 
 Run the following command to start the application using Docker Compose:
