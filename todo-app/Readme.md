@@ -1,4 +1,4 @@
-Todo Application
+# Todo Application
 This repository contains a Todo Application built with React and Node.js. Follow the instructions below to set up and run the application on your local machine.
 
 Installation
