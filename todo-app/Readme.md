@@ -31,10 +31,7 @@ Open a web browser and enter the URL for the frontend.
 
 The application is now running, and you can start using it to manage your todos.
 
-Troubleshooting
+# Troubleshooting
 If you encounter any issues or errors during the installation or usage of the application, please make sure you have followed the instructions correctly and have all the necessary dependencies installed on your device.
 
 If the problem persists, feel free to create an issue in the repository, providing details about the error and steps to reproduce it. We will be happy to assist you.
-
-License
-This project is licensed under the MIT License. Feel free to use and modify the code according to your needs.
