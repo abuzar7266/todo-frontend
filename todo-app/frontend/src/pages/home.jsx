@@ -30,11 +30,18 @@ const Home = () =>{
     const [selectedItem,setSelectedItem] = useState(null);
     useEffect(()=>{
         if(listUpdate===1){
-            axios.get(`${config.serviceUrl}`,{}).then((data)=>{   
-                console.log("Updated");
-                setTask(data.data.tasks);
-                setListUpdate(0);
-            })
+            try{
+                axios.get(`${config.serviceUrl}`,{}).then((data)=>{   
+                    console.log("Updated");
+                    setTask(data.data.tasks);
+                    setListUpdate(0);
+                })
+            }
+            catch(err){
+                toast.error('Error!', {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            }
         }
     },[listUpdate,setListUpdate])
     const handleOpenModal = () => {
@@ -72,21 +79,28 @@ const Home = () =>{
         }
     }
     const handleAdd = ()=>{
-        axios.post(`${config.serviceUrl}`,{task:newtask})
-        .then((x)=>{
-            console.log(x);
-            if(x.data.status===false){
-               // toast('Failed to add item');
-               toast.error('Error! Failed to add item', {
-                position: toast.POSITION.TOP_RIGHT
-               });
-            }else{
-                toast.success('New item added!', {
+        try{
+            axios.post(`${config.serviceUrl}`,{task:newtask})
+            .then((x)=>{
+                console.log(x);
+                if(x.data.status===false){
+                // toast('Failed to add item');
+                toast.error('Error! Failed to add item', {
                     position: toast.POSITION.TOP_RIGHT
                 });
-            }
-            setListUpdate(1);
-        })
+                }else{
+                    toast.success('New item added!', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+                setListUpdate(1);
+            })
+        }
+        catch(err){
+            toast.error('Error!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
     const handlePrev = () =>{
         if(start-9<0){
@@ -102,52 +116,73 @@ const Home = () =>{
         }
     }
     const handleDeleteOne = (_id)=>{
-        axios.delete(`${config.serviceUrl}${_id}`,{}).then((res)=>{
-            console.log(res);
-            if(res.data.status===true){
-                toast.success('Successfully deleted the item', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }else{
-                toast.error('Error! Item does not exist', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }
-            setListUpdate(1);
-            setItemOpt(false);
-        })
+        try{
+            axios.delete(`${config.serviceUrl}${_id}`,{}).then((res)=>{
+                console.log(res);
+                if(res.data.status===true){
+                    toast.success('Successfully deleted the item', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }else{
+                    toast.error('Error! Item does not exist', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+                setListUpdate(1);
+                setItemOpt(false);
+            })
+        }
+        catch(err){
+            toast.error('Error!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
     const handleClearAll = ()=>{
-        axios.delete(`${config.serviceUrl}`,{}).then((res)=>{
-            if(res.data.status===true){
-                toast.success('Cleared the item list', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }else{
-                toast.warning('Warning! List is already empty', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }
-            setListUpdate(1);
-            setIsOpen(false);
-        })
+        try{
+            axios.delete(`${config.serviceUrl}`,{}).then((res)=>{
+                if(res.data.status===true){
+                    toast.success('Cleared the item list', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }else{
+                    toast.warning('Warning! List is already empty', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+                setListUpdate(1);
+                setIsOpen(false);
+            })
+        }
+        catch(err){
+            toast.error('Error!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
     const handleUpdate = (t,c, _id)=>{
-        axios.put(`${config.serviceUrl}${_id}`,{
-            task:t,
-            completed:c
-        }).then((res)=>{
-            if(res.data.status===true){
-                setListUpdate(1);
-                toast.success('Item marked as done', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }else{
-                toast.warning('Warning! Completed tasks can not be undone!', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            }
-        })
+        try{
+            axios.put(`${config.serviceUrl}${_id}`,{
+                task:t,
+                completed:c
+            }).then((res)=>{
+                if(res.data.status===true){
+                    setListUpdate(1);
+                    toast.success('Item marked as done', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }else{
+                    toast.warning('Warning! Completed tasks can not be undone!', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+            })
+        }
+        catch(err){
+            toast.error('Error!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
     return (<>
     <Container className='container-theme' fluid>
