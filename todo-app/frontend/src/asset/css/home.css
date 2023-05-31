@@ -1,6 +1,8 @@
 .container-theme{
     background-image: url("../img/theme.jpg");
     background-size: cover;
+    height:100vh;
+    width: 100%;
 }
 @keyframes slide {
     0% {
@@ -110,7 +112,16 @@
     animation: slide 1s ease-in-out forwards;
     z-index: 0;
 }
-
+.profile-pic-format{
+    object-fit: cover;
+}
+.add-item-modal{
+    height:40px;
+    width:465px;
+    border:0;
+    border-bottom:1px solid gray;
+    padding-left:10px;
+}
 .tast-text-length{
     overflow: hidden;
     white-space: nowrap;
@@ -118,6 +129,44 @@
     max-width: 100%;
 }
 
-.profile-pic-format{
-    object-fit: cover;
+.list-arrowbackward{
+    text-align:center;
+    color:black;
+    width:50px;
+    border-radius:10px;
+    opacity:100%;
+    background:white;
+    cursor:pointer;
+}
+.list-arrowforward{
+    margin-left:15px;
+    text-align:center;
+    color:black;
+    width:50px;
+    border-radius:10px;
+    opacity:100%;
+    background:white;
+    cursor:pointer
+}
+.list-expandIcon{
+    margin-left:90px;
+    color:black;
+    opacity:40%;
+}
+.list-option{
+    position: absolute;
+    top: 10%;
+    left: -55%;
+    z-index: 999;
+    opacity:100%;
+}
+.list-slide{
+    margin-left:10px;
+    color:black;
+    opacity:40%;
+}
+
+.list-bar{
+    position: relative;
+    z-index: 999;
 }

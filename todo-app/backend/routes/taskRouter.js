@@ -20,9 +20,16 @@ Router.route("/")
         })
     })
     .delete(function(req,res,next){
-        Item.deleteMany({}).then((x)=>{
-            res.statusCode = 200;
-            res.json({status:true});
+        Item.find({}).then((data)=>{
+            if(data.length>0){
+                Item.deleteMany({}).then((x)=>{
+                    res.statusCode = 200;
+                    res.json({status:true});
+                })
+            }else{
+                res.statusCode = 200;
+                res.json({status:false});
+            }
         })
     })
 Router.route("/:id")
@@ -36,11 +43,19 @@ Router.route("/:id")
                 res.json({status:false})
             }
         })
+        .catch((err)=>{
+            res.statusCode = 200;
+            res.json({status:false});  
+        })
     })
     .delete(function(req,res,next){
         Item.findByIdAndDelete(req.params.id).then((x)=>{
             res.statusCode = 200;
             res.json({status:true});
+        })
+        .catch((err)=>{
+            res.statusCode = 200;
+            res.json({status:false});
         })
     });
 Router.put('/:id', (req, res) => {

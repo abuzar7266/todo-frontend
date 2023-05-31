@@ -1,0 +1,27 @@
+.item-check{
+    margin-left:10px;
+    color:black;
+    opacity:40%;
+}
+.item-option{
+    margin-left:130px;
+    color:black;
+    opacity:40%;
+    cursor:pointer;
+}
+
+.tast-text-length{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150%;
+}
+.option-list{
+    left:55.3%;
+    opacity:80%;
+}
+.profile-pic{
+    border-radius:100px;
+    border:1px solid gray;
+    box-shadow:black 0px 10px 10px;
+}
