@@ -72,7 +72,7 @@ export const deleteAllTask = () =>{
                 status = 2;
                 status_msg = 'Cleared the item list';
             }else{
-                status = 1;
+                status = 3;
                 status_msg = 'Warning! List is already empty';
             }
             dispatch({
