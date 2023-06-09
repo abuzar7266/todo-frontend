@@ -4,7 +4,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Row, Col, Modal } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import '../asset/css/item.css';
 const Item = (props)=>{

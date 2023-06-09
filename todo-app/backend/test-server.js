@@ -8,12 +8,9 @@ var cors = require('cors');
 const MongoDbStore = require('connect-mongo');
 const dotenv = require('dotenv');
 
-const {connectDB} = require('./connectDB');
-
 var app = express();
 dotenv.config({ path: './.env' });
 
-connectDB();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

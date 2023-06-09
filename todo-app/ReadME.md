@@ -32,6 +32,16 @@ Open a web browser and enter the URL for the frontend.
 
 The application is now running, and you can start using it to manage your todos.
 
+# Unit Testing
+
+To start the unit test execution, go
+open git and run following commands
+
+1. cd ./todo-application/todo-app/backend/
+2. npm test
+
+
+Note: There are slight chances that server during testing might fail to connect with database. In that case, run Ctrl+C to terminate the test suit execution and again run "npm test" command
 # Troubleshooting
 
 If you encounter any issues or errors during the installation or usage of the application, please make sure you have followed the instructions correctly and have all the necessary dependencies installed on your device.
